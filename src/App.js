@@ -6,29 +6,20 @@ import Modal from "./Modal";
 import "./App.css";
 import "./Timer.css";
 
+import backgroundImage1 from "./background/background12.png";
+import backgroundImage2 from "./background/background2.png";
+import backgroundImage3 from "./background/background3.png";
+// import backgroundImage4 from "./background/background4.jpg";
+
 const DEFAULT_SESSION_TYPE = "Focus";
 
 export default function App() {
   const [sessionType, setSessionType] = useState(DEFAULT_SESSION_TYPE);
   const [showModal, setShowModal] = useState(false);
-  const [backgroundColor, setBackgroundColor] = useState("#734f9a"); // Default background color
+  const [backgroundUrl, setBackgroundUrl] = useState(backgroundImage1);
 
   const handleSessionChange = (type) => {
     setSessionType(type);
-    // Set background color based on session type
-    switch (type) {
-      case "Short Break":
-        setBackgroundColor("#8bd450"); // Change to your desired color for short break
-        break;
-      case "Long Break":
-        setBackgroundColor("#3f6d4e"); // Change to your desired color for long break
-        break;
-      case "Focus":
-        setBackgroundColor("#965fd4"); // Change to your desired color for focus session
-        break;
-      default:
-        setBackgroundColor("#965fd4"); // Default color
-    }
   };
 
   const restoreDefaultSettings = () => {
@@ -49,10 +40,17 @@ export default function App() {
     setShowModal(false);
   };
 
+  const refreshBackgroundImage = () => {
+    const newBackgroundImage =
+      backgroundUrl === backgroundImage1 ? backgroundImage2 : backgroundImage3;
+    setBackgroundUrl(newBackgroundImage);
+  };
+
   return (
-    <div className="App" style={{ backgroundColor }}>
-      <SessionButtons handleSessionChange={handleSessionChange} />
+    <div className="App" style={{ backgroundImage: `url(${backgroundUrl})` }}>
+      <div className="gradient"></div>
       <div className="container">
+        <SessionButtons handleSessionChange={handleSessionChange} />
         <Timer sessionType={sessionType} />
       </div>
       <Modal showModal={showModal} closeModal={closeModal} />
@@ -63,6 +61,10 @@ export default function App() {
         |
         <div className="restore-default-settings">
           <button onClick={restoreDefaultSettings}>Reset settings</button>
+        </div>
+        |
+        <div className="refresh-background">
+          <button onClick={refreshBackgroundImage}>Update Image</button>
         </div>
       </div>
     </div>
