@@ -1,0 +1,98 @@
+.Timer {
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+  margin: 90px 0;
+}
+
+.Timer button {
+  border: none;
+  background-color: transparent;
+  color: #8bd450;
+  opacity: 0.5;
+}
+
+.Timer button:hover,
+.Timer button:active {
+  cursor: pointer;
+  scale: 1.1;
+  opacity: 1;
+}
+
+.Timer button:active {
+  scale: 0.9;
+}
+
+.Timer .timer-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Timer .timer-display h1 {
+  font-size: 15rem;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin: 0 1rem;
+  color: #1d1a2f;
+}
+
+.Timer .timer-display button {
+  font-family: inherit;
+  font-size: 2.5rem;
+  padding: 0;
+  filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.4));
+}
+
+.Timer .timer-save-link button {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+  color: #fafafa;
+  font-size: 0.9rem;
+  opacity: 1;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.Timer .timer-save-link button:hover {
+  font-size: 0.85rem;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.Timer .timer-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Timer .timer-buttons button svg {
+  width: 2em;
+  height: 2em;
+  filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.4));
+}
+
+.Timer .timer-buttons button.reset-icon {
+  font-size: 0.8rem;
+}
+
+.Timer .timer-buttons button.sound-icon {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 480px) {
+  .Timer .timer-buttons {
+    margin-top: 15px;
+  }
+
+  .Timer .timer-display h1 {
+    font-size: 4.3rem;
+  }
+
+  .Timer .timer-save-link button {
+    font-size: 0.9rem;
+  }
+
+  .Timer .timer-buttons button.playpause-icon {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,80 @@
+.SessionButtons button {
+  font-family: "Josefin Sans", sans-serif;
+  border: none;
+  border-radius: 2rem;
+  background-color: rgb(118, 88, 152, 0.55);
+  border: 2px solid #8bd450;
+  color: #1d1a2f;
+  padding: 0.9rem;
+  order: 3;
+  margin: 0.5rem 0.5rem;
+  transition: scale 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.SessionButtons button:hover {
+  cursor: pointer;
+  background-color: #fafafa;
+}
+
+.SessionButtons button:active {
+  scale: 0.9;
+}
+
+.SessionButtons button.active {
+  background-color: #8bd450;
+}
+
+.SessionButtons .break-buttons {
+  display: flex;
+}
+
+.SessionButtons .break-buttons button {
+  font-size: 1rem;
+}
+
+.SessionButtons .break-buttons .short-break {
+  flex-grow: 1;
+}
+
+.SessionButtons .break-buttons .long-break {
+  flex-grow: 11;
+}
+
+.SessionButtons .focus {
+  width: calc(100% - 1rem);
+  font-size: 1.3rem;
+}
+
+@media (max-width: 480px) {
+  .SessionButtons button {
+    padding: 0.7rem;
+  }
+
+  .SessionButtons .break-buttons button {
+    font-size: 0.9rem;
+  }
+  .SessionButtons .focus {
+    font-size: 1.2rem;
+  }
+}
+
+.active {
+  background-color: #64b5f6; /* Default active button color */
+  color: white;
+}
+
+button.active.short-break {
+  background-color: #ea8533; /* Color for Short Break when active */
+  border: 2px solid #ed2323;
+}
+.long-break.active {
+  background-color: #81c784; /* Color for Long Break when active */
+}
+
+.focus.active {
+  background-color: #d9bbf9; /* Color for Pomodoro (Focus) when active */
+}
