@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Timer from "./Timer";
+import Header from "./Header";
 import SessionButtons from "./Buttons";
 import Modal from "./Modal";
 
@@ -42,12 +43,19 @@ export default function App() {
   return (
     <div className="App" style={{ backgroundColor }}>
       <div className="container">
-        {/* <h2>toto</h2> */}
-        <Timer sessionType={sessionType} />
-        {/* <SessionButtons handleSessionChange={handleSessionChange} /> */}
+        <Header />
       </div>
-      {/* <Modal showModal={showModal} closeModal={closeModal} /> */}
-      {/* <div className="footer">
+    </div>
+  );
+}
+{
+  /* 
+      <Timer sessionType={sessionType} />
+      <SessionButtons handleSessionChange={handleSessionChange} />
+
+      <Modal showModal={showModal} closeModal={closeModal} />
+
+      <div className="footer">
         <div className="pomodoro-info">
           <button onClick={openModal}>About this app</button>
         </div>
@@ -55,13 +63,6 @@ export default function App() {
         <div className="restore-default-settings">
           <button onClick={restoreDefaultSettings}>Reset settings</button>
         </div>
-        |
-        <div className="change-background-color">
-          <button onClick={() => changeBackgroundColor("#f0f0f0")}>
-            Change Background Color
-          </button>
-        </div>
-      </div> */}
-    </div>
-  );
+      </div>
+    </div> */
 }
