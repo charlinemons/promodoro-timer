@@ -123,23 +123,23 @@ export default function Timer({ sessionType = "Focus" }) {
 
   return (
     <div className="Timer">
-      <TimerDisplay
-        time={time}
-        decrementTime={decrementTime}
-        incrementTime={incrementTime}
-      />
-      <h2 className="stay-focus">Stay focus.</h2>
-      <TimerSaveLink
-        showSaveLink={showSaveLink}
-        saveNewDefaultTime={saveNewDefaultTime}
-        time={time}
-      />
       <TimerControls
         soundOn={soundOn}
         toggleSound={toggleSound}
         timerActive={timerActive}
         toggleTimer={toggleTimer}
         resetTimer={resetTimer}
+      />
+      <TimerDisplay
+        time={time}
+        decrementTime={decrementTime}
+        incrementTime={incrementTime}
+      />
+      {/* <h2 className="stay-focus">Stay focus.</h2> */}
+      <TimerSaveLink
+        showSaveLink={showSaveLink}
+        saveNewDefaultTime={saveNewDefaultTime}
+        time={time}
       />
     </div>
   );

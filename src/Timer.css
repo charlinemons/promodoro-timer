@@ -1,18 +1,21 @@
 .Timer {
-  text-align: center;
-  font-family: "Quicksand", sans-serif;
+  /* text-align: center; */
+  font-family: "neue haas grotesk display pro";
   font-weight: 400;
   margin: 90px 35px;
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100%; */
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid;
 }
 
 .Timer button {
   border: none;
   background-color: transparent;
-  color: #8bd450;
-  opacity: 0.5;
+  color: #1f1f1d;
+  /* opacity: 0.5; */
 }
 
 .Timer button:hover,
@@ -26,19 +29,20 @@
   scale: 0.9;
 }
 
-.Timer .timer-display {
+/* .Timer .timer-display {
   display: flex;
   align-items: flex-end;
   border-bottom: 1px solid #1f1f1d;
-}
+} */
 
 .Timer .timer-display h1 {
   font-size: 15rem;
-  font-family: "Quicksand", sans-serif;
+  font-family: "neue haas grotesk display pro";
   font-weight: 400;
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   margin: 0 1rem;
-  color: #1d1a2f;
+  color: #1f1f1d;
+  line-height: 1;
 }
 
 .Timer h2 {
@@ -73,15 +77,14 @@
 }
 
 .Timer .timer-buttons {
-  margin-top: 30px;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .Timer .timer-buttons button svg {
-  width: 2em;
-  height: 2em;
-  filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.4));
+  font-size: 25px;
+  /* filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.4)); */
 }
 
 .Timer .timer-buttons button.reset-icon {

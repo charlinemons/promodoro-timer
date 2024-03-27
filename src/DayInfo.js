@@ -34,8 +34,8 @@ const DayInfo = () => {
     <div id="day_info">
       <p>
         {month} {date}, {year} | {formattedTime} <br />
-        {currentDay.smiley} <br />
-        it’s <strong>{currentDay.day}</strong>
+        {/* {currentDay.smiley} <br /> */}
+        {/* it’s <strong>{currentDay.day}</strong> */}
       </p>
     </div>
   );

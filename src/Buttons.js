@@ -11,34 +11,36 @@ export default function SessionButtons({ handleSessionChange }) {
 
   return (
     <div className="SessionButtons">
-      <div className="break-buttons">
+      <div className="controller-wrapper">
+        <div className="break-buttons">
+          <button
+            className={
+              activeSessionType === "Short Break"
+                ? "active short-break"
+                : "short-break"
+            }
+            onClick={() => updateActiveSessionType("Short Break")}
+          >
+            Short Break
+          </button>
+          <button
+            className={
+              activeSessionType === "Long Break"
+                ? "active long-break"
+                : "long-break"
+            }
+            onClick={() => updateActiveSessionType("Long Break")}
+          >
+            Long Break
+          </button>
+        </div>
         <button
-          className={
-            activeSessionType === "Short Break"
-              ? "active short-break"
-              : "short-break"
-          }
-          onClick={() => updateActiveSessionType("Short Break")}
+          className={activeSessionType === "Focus" ? "active focus" : "focus"}
+          onClick={() => updateActiveSessionType("Focus")}
         >
-          Short Break
-        </button>
-        <button
-          className={
-            activeSessionType === "Long Break"
-              ? "active long-break"
-              : "long-break"
-          }
-          onClick={() => updateActiveSessionType("Long Break")}
-        >
-          Long Break
+          Pomodoro
         </button>
       </div>
-      <button
-        className={activeSessionType === "Focus" ? "active focus" : "focus"}
-        onClick={() => updateActiveSessionType("Focus")}
-      >
-        Pomodoro
-      </button>
     </div>
   );
 }

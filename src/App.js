@@ -44,14 +44,16 @@ export default function App() {
     <div className="App" style={{ backgroundColor }}>
       <div className="container">
         <Header />
+        <SessionButtons handleSessionChange={handleSessionChange} />
+        <Timer sessionType={sessionType} />
       </div>
     </div>
   );
 }
 {
   /* 
-      <Timer sessionType={sessionType} />
-      <SessionButtons handleSessionChange={handleSessionChange} />
+      
+      
 
       <Modal showModal={showModal} closeModal={closeModal} />
 

@@ -1,31 +1,37 @@
+.SessionButtons .controller-wrapper {
+  padding: 30px;
+  width: 290px;
+  margin: auto;
+}
+
 .SessionButtons button {
   font-family: "Josefin Sans", sans-serif;
   border: none;
-  border-radius: 2rem;
-  background-color: rgb(118, 88, 152, 0.55);
-  border: 2px solid #8bd450;
-  color: #1d1a2f;
-  padding: 0.9rem;
-  order: 3;
+  border-radius: 1rem;
+  background-color: #1f1f1d;
+  color: #efeeeb;
+  padding: 0.7rem;
   margin: 0.5rem 0.5rem;
   transition: scale 0.5s ease;
-  display: flex;
-  align-items: center;
   justify-content: center;
   line-height: 1;
+  width: 230px;
+  border: 1px solid transparent;
 }
 
 .SessionButtons button:hover {
   cursor: pointer;
-  background-color: #fafafa;
-}
-
-.SessionButtons button:active {
-  scale: 0.9;
+  background-color: #efeeeb;
+  color: #1f1f1d;
+  border: 1px solid;
 }
 
 .SessionButtons button.active {
-  background-color: #8bd450;
+  background-color: #efeeeb;
+  color: #1f1f1d;
+  border: 1px solid;
+  padding: 0.7rem;
+  margin: 0.5rem 0.5rem;
 }
 
 .SessionButtons .break-buttons {
@@ -36,17 +42,9 @@
   font-size: 1rem;
 }
 
-.SessionButtons .break-buttons .short-break {
-  flex-grow: 1;
-}
-
-.SessionButtons .break-buttons .long-break {
-  flex-grow: 11;
-}
-
 .SessionButtons .focus {
   width: calc(100% - 1rem);
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 @media (max-width: 480px) {
@@ -60,21 +58,4 @@
   .SessionButtons .focus {
     font-size: 1.2rem;
   }
-}
-
-.active {
-  background-color: #64b5f6; /* Default active button color */
-  color: white;
-}
-
-button.active.short-break {
-  background-color: #ea8533; /* Color for Short Break when active */
-  border: 2px solid #ed2323;
-}
-.long-break.active {
-  background-color: #81c784; /* Color for Long Break when active */
-}
-
-.focus.active {
-  background-color: #d9bbf9; /* Color for Pomodoro (Focus) when active */
 }
