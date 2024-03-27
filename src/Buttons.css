@@ -26,6 +26,10 @@
   border: 1px solid;
 }
 
+/* .SessionButtons button:active {
+  scale: 0.9;
+} */
+
 .SessionButtons button.active {
   background-color: #efeeeb;
   color: #1f1f1d;
@@ -40,6 +44,14 @@
 
 .SessionButtons .break-buttons button {
   font-size: 1rem;
+}
+
+.SessionButtons .break-buttons .short-break {
+  flex-grow: 1;
+}
+
+.SessionButtons .break-buttons .long-break {
+  flex-grow: 11;
 }
 
 .SessionButtons .focus {
