@@ -3,6 +3,9 @@
   font-family: "Quicksand", sans-serif;
   font-weight: 400;
   margin: 90px 35px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .Timer button {

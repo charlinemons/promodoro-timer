@@ -41,10 +41,10 @@ export default function App() {
 
   return (
     <div className="App" style={{ backgroundColor }}>
-      {/* <div className="gradient"></div> */}
       <div className="container">
-        {/* <SessionButtons handleSessionChange={handleSessionChange} /> */}
+        {/* <h2>toto</h2> */}
         <Timer sessionType={sessionType} />
+        {/* <SessionButtons handleSessionChange={handleSessionChange} /> */}
       </div>
       {/* <Modal showModal={showModal} closeModal={closeModal} /> */}
       {/* <div className="footer">
