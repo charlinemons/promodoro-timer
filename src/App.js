@@ -46,6 +46,9 @@ export default function App() {
         <Header />
         <SessionButtons handleSessionChange={handleSessionChange} />
         <Timer sessionType={sessionType} />
+        <h2 className="stay-focus">
+          Get shit done & don't give a fuck about what other people think
+        </h2>
       </div>
     </div>
   );

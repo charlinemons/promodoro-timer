@@ -135,7 +135,6 @@ export default function Timer({ sessionType = "Focus" }) {
         decrementTime={decrementTime}
         incrementTime={incrementTime}
       />
-      {/* <h2 className="stay-focus">Stay focus.</h2> */}
       <TimerSaveLink
         showSaveLink={showSaveLink}
         saveNewDefaultTime={saveNewDefaultTime}

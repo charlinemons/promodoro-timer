@@ -36,6 +36,7 @@ body {
 } */
 
 .App .container {
+  margin: auto 35px;
   /* display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -75,8 +76,14 @@ body {
   filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.8));
 }
 
-.App .footer button:hover {
+.footer button:hover {
   cursor: pointer;
+  font-weight: 500;
+}
+
+.App h2.stay-focus {
+  font-family: "neue haas grotesk display pro";
+  text-transform: uppercase;
   font-weight: 500;
 }
 
