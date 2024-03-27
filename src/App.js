@@ -6,17 +6,12 @@ import Modal from "./Modal";
 import "./App.css";
 import "./Timer.css";
 
-import backgroundImage1 from "./background/background12.png";
-import backgroundImage2 from "./background/background2.png";
-import backgroundImage3 from "./background/background3.png";
-// import backgroundImage4 from "./background/background4.jpg";
-
 const DEFAULT_SESSION_TYPE = "Focus";
 
 export default function App() {
   const [sessionType, setSessionType] = useState(DEFAULT_SESSION_TYPE);
   const [showModal, setShowModal] = useState(false);
-  const [backgroundUrl, setBackgroundUrl] = useState(backgroundImage1);
+  const [backgroundColor, setBackgroundColor] = useState("#EFEEEB"); // Set your desired background color here
 
   const handleSessionChange = (type) => {
     setSessionType(type);
@@ -40,21 +35,19 @@ export default function App() {
     setShowModal(false);
   };
 
-  const refreshBackgroundImage = () => {
-    const newBackgroundImage =
-      backgroundUrl === backgroundImage1 ? backgroundImage2 : backgroundImage3;
-    setBackgroundUrl(newBackgroundImage);
+  const changeBackgroundColor = (color) => {
+    setBackgroundColor(color);
   };
 
   return (
-    <div className="App" style={{ backgroundImage: `url(${backgroundUrl})` }}>
-      <div className="gradient"></div>
+    <div className="App" style={{ backgroundColor }}>
+      {/* <div className="gradient"></div> */}
       <div className="container">
-        <SessionButtons handleSessionChange={handleSessionChange} />
+        {/* <SessionButtons handleSessionChange={handleSessionChange} /> */}
         <Timer sessionType={sessionType} />
       </div>
-      <Modal showModal={showModal} closeModal={closeModal} />
-      <div className="footer">
+      {/* <Modal showModal={showModal} closeModal={closeModal} /> */}
+      {/* <div className="footer">
         <div className="pomodoro-info">
           <button onClick={openModal}>About this app</button>
         </div>
@@ -63,10 +56,12 @@ export default function App() {
           <button onClick={restoreDefaultSettings}>Reset settings</button>
         </div>
         |
-        <div className="refresh-background">
-          <button onClick={refreshBackgroundImage}>Update Image</button>
+        <div className="change-background-color">
+          <button onClick={() => changeBackgroundColor("#f0f0f0")}>
+            Change Background Color
+          </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
