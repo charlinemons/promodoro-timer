@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-const daysOfWeek = [
-  { day: "Sunday" },
-  { day: "Monday" },
-  { day: "Tuesday" },
-  { day: "Wednesday" },
-  { day: "Thursday" },
-  { day: "Friday" },
-  { day: "Saturday" },
-];
+// const daysOfWeek = [
+//   { day: "Sunday" },
+//   { day: "Monday" },
+//   { day: "Tuesday" },
+//   { day: "Wednesday" },
+//   { day: "Thursday" },
+//   { day: "Friday" },
+//   { day: "Saturday" },
+// ];
 
 const DayInfo = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -21,7 +21,7 @@ const DayInfo = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  const currentDay = daysOfWeek[currentDate.getDay()];
+  // const currentDay = daysOfWeek[currentDate.getDay()];
   const month = currentDate.toLocaleString("en-US", { month: "long" });
   const date = currentDate.getDate();
   const year = currentDate.getFullYear();

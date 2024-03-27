@@ -3,6 +3,7 @@ import Timer from "./Timer";
 import Header from "./Header";
 import SessionButtons from "./Buttons";
 import Modal from "./Modal";
+import ToDo from "./ToDo";
 
 import "./App.css";
 import "./Timer.css";
@@ -12,7 +13,7 @@ const DEFAULT_SESSION_TYPE = "Focus";
 export default function App() {
   const [sessionType, setSessionType] = useState(DEFAULT_SESSION_TYPE);
   const [showModal, setShowModal] = useState(false);
-  const [backgroundColor, setBackgroundColor] = useState("#EFEEEB"); // Set your desired background color here
+  const [backgroundColor] = useState("#EFEEEB"); // Set your desired background color here
 
   const handleSessionChange = (type) => {
     setSessionType(type);
@@ -36,9 +37,9 @@ export default function App() {
     setShowModal(false);
   };
 
-  const changeBackgroundColor = (color) => {
-    setBackgroundColor(color);
-  };
+  // const changeBackgroundColor = (color) => {
+  //   setBackgroundColor(color);
+  // };
 
   return (
     <div className="App" style={{ backgroundColor }}>
@@ -46,20 +47,12 @@ export default function App() {
         <Header />
         <SessionButtons handleSessionChange={handleSessionChange} />
         <Timer sessionType={sessionType} />
+        <Modal showModal={showModal} closeModal={closeModal} />
         <h2 className="stay-focus">
           Get shit done & don't give a fuck about what other people think
         </h2>
+        <ToDo />
       </div>
-    </div>
-  );
-}
-{
-  /* 
-      
-      
-
-      <Modal showModal={showModal} closeModal={closeModal} />
-
       <div className="footer">
         <div className="pomodoro-info">
           <button onClick={openModal}>About this app</button>
@@ -69,5 +62,6 @@ export default function App() {
           <button onClick={restoreDefaultSettings}>Reset settings</button>
         </div>
       </div>
-    </div> */
+    </div>
+  );
 }
