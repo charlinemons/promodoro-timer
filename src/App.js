@@ -46,12 +46,12 @@ export default function App() {
       <div className="container">
         <Header />
         <SessionButtons handleSessionChange={handleSessionChange} />
+        <ToDo />
         <Timer sessionType={sessionType} />
         <Modal showModal={showModal} closeModal={closeModal} />
         <h2 className="stay-focus">
           Get shit done & don't give a fuck about what other people think
         </h2>
-        <ToDo />
       </div>
       <div className="footer">
         <div className="pomodoro-info">

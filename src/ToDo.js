@@ -5,7 +5,7 @@ class TodoList extends Component {
     super(props);
     this.state = {
       todoItems: JSON.parse(localStorage.getItem("todoItems")) || [],
-      inputValue: "",
+      inputValue: "Add new task",
     };
   }
 
@@ -59,7 +59,19 @@ class TodoList extends Component {
       <div className="left-container">
         <div className="container todo-container">
           <div className="heading">
-            <h2>Todo Today</h2>
+            <h2>Todo list</h2>
+          </div>
+          <div className="todo-add">
+            <input
+              type="text"
+              className="todo-input"
+              value={inputValue}
+              onChange={this.handleInputChange}
+              onKeyDown={this.handleInputKeyDown}
+            />
+            <button className="todo-btn" onClick={this.addTodo}>
+              <i className="fa-regular fa-paper-plane"></i>
+            </button>
           </div>
           <div className="todo-list" id="todo">
             <ul>
@@ -77,18 +89,6 @@ class TodoList extends Component {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="todo-add">
-            <input
-              type="text"
-              className="todo-input"
-              value={inputValue}
-              onChange={this.handleInputChange}
-              onKeyDown={this.handleInputKeyDown}
-            />
-            <button className="todo-btn" onClick={this.addTodo}>
-              <i className="fa-regular fa-paper-plane"></i>
-            </button>
           </div>
         </div>
       </div>
