@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "./ToDo.css";
+import { GoPlus } from "react-icons/go";
 
 class TodoList extends Component {
   constructor(props) {
@@ -33,8 +35,18 @@ class TodoList extends Component {
     const todoText = inputValue.trim();
     if (todoText) {
       const newTodoItems = [...todoItems, { text: todoText, done: false }];
-      this.setState({ todoItems: newTodoItems, inputValue: "" });
+      this.setState({ todoItems: newTodoItems, inputValue: "Add new task" });
       this.updateTodoLocalStorage(newTodoItems);
+    }
+  };
+
+  refreshTodoList = () => {
+    const confirmation = window.confirm(
+      "Are you sure you want to refresh the list?"
+    );
+    if (confirmation) {
+      this.setState({ todoItems: [] });
+      localStorage.removeItem("todoItems");
     }
   };
 
@@ -54,43 +66,72 @@ class TodoList extends Component {
 
   render() {
     const { todoItems, inputValue } = this.state;
+    const remainingTasks = todoItems.filter((item) => !item.done);
+    const numTasks = remainingTasks.length;
+
+    let message;
+    if (numTasks === 0) {
+      message = "All tasks are done! Good job :)";
+    } else if (numTasks > 8) {
+      message = `(No pressure, but you have ${numTasks} tasks to complete)`;
+    } else if (numTasks > 3) {
+      message = `(You have ${numTasks} tasks to complete)`;
+    } else {
+      message = `(You have ${numTasks} tasks to complete; almost done, let's go!)`;
+    }
 
     return (
-      <div className="left-container">
-        <div className="container todo-container">
-          <div className="heading">
-            <h2>Todo list</h2>
-          </div>
-          <div className="todo-add">
-            <input
-              type="text"
-              className="todo-input"
-              value={inputValue}
-              onChange={this.handleInputChange}
-              onKeyDown={this.handleInputKeyDown}
-            />
-            <button className="todo-btn" onClick={this.addTodo}>
-              <i className="fa-regular fa-paper-plane"></i>
-            </button>
-          </div>
-          <div className="todo-list" id="todo">
-            <ul>
-              {todoItems.map((item, index) => (
-                <li
-                  key={index}
-                  className={item.done ? "list-item done" : "list-item"}
-                  onClick={() => this.toggleTodoDone(index)}
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    this.confirmTodoDelete(index);
-                  }}
-                >
-                  {item.text}
-                </li>
-              ))}
-            </ul>
+      <div className="ToDo">
+        <div className="todo-heading">
+          <h2>Today's to-do</h2>
+          <small>{message}</small>
+        </div>
+        <div className="todo-add">
+          <div className="input-container">
+            <div className="value-container">
+              <button className="add-task-button" onClick={this.addTodo}>
+                <GoPlus />
+              </button>
+              <input
+                type="text"
+                className="todo-input"
+                value={inputValue === "Add new task" ? "" : inputValue}
+                onChange={this.handleInputChange}
+                onKeyDown={this.handleInputKeyDown}
+                onFocus={() => {
+                  if (inputValue === "Add new task") {
+                    this.setState({ inputValue: "" });
+                  }
+                }}
+                onBlur={() => {
+                  if (inputValue.trim() === "") {
+                    this.setState({ inputValue: "Add new task" });
+                  }
+                }}
+              />
+            </div>
           </div>
         </div>
+        <div className="todo-list" id="todo">
+          <ul>
+            {todoItems.map((item, index) => (
+              <li
+                key={index}
+                className={item.done ? "list-item done" : "list-item"}
+                onClick={() => this.toggleTodoDone(index)}
+                onContextMenu={(e) => {
+                  e.preventDefault();
+                  this.confirmTodoDelete(index);
+                }}
+              >
+                {item.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <button className="refresh-button" onClick={this.refreshTodoList}>
+          clear
+        </button>
       </div>
     );
   }

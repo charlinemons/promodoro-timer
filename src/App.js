@@ -4,6 +4,7 @@ import Header from "./Header";
 import SessionButtons from "./Buttons";
 import Modal from "./Modal";
 import ToDo from "./ToDo";
+import Notes from "./Notes";
 
 import "./App.css";
 import "./Timer.css";
@@ -46,7 +47,10 @@ export default function App() {
       <div className="container">
         <Header />
         <SessionButtons handleSessionChange={handleSessionChange} />
-        <ToDo />
+        <div className="notes-section">
+          <ToDo />
+          <Notes />
+        </div>
         <Timer sessionType={sessionType} />
         <Modal showModal={showModal} closeModal={closeModal} />
         <h2 className="stay-focus">
