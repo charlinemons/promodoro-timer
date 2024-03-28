@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-// const daysOfWeek = [
-//   { day: "Sunday" },
-//   { day: "Monday" },
-//   { day: "Tuesday" },
-//   { day: "Wednesday" },
-//   { day: "Thursday" },
-//   { day: "Friday" },
-//   { day: "Saturday" },
-// ];
-
 const DayInfo = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -21,21 +11,22 @@ const DayInfo = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  // const currentDay = daysOfWeek[currentDate.getDay()];
   const month = currentDate.toLocaleString("en-US", { month: "long" });
   const date = currentDate.getDate();
   const year = currentDate.getFullYear();
 
   const hours = currentDate.getHours();
   const minutes = currentDate.getMinutes();
-  const formattedTime = `${hours}:${minutes < 10 ? "0" + minutes : minutes}`;
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const formattedHours = hours % 12 || 12;
+  const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+
+  const formattedTime = `${formattedHours}:${formattedMinutes} ${ampm}`;
 
   return (
     <div id="day_info">
       <p>
-        {month} {date}, {year} | {formattedTime} <br />
-        {/* {currentDay.smiley} <br /> */}
-        {/* it’s <strong>{currentDay.day}</strong> */}
+        {month} {date}, {year} | {formattedTime}
       </p>
     </div>
   );
