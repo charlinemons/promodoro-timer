@@ -1,0 +1,39 @@
+.Notes {
+  width: 100%;
+  height: 550px;
+}
+.notes-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 50px;
+}
+.Notes .note-heading {
+  margin-bottom: 2em;
+}
+.Notes small {
+  margin-bottom: 2em;
+}
+
+.bloc-note {
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+}
+
+textarea.block-text {
+  box-sizing: border-box;
+  width: calc(100% - 16px);
+  height: 80%;
+  resize: none;
+  border: none;
+  border-radius: 2px;
+  font-family: inherit;
+  padding: 15px;
+  background-color: var(--gray);
+  font-size: 16px;
+}
+
+:focus-visible {
+  outline: -webkit-focus-ring-color auto 0px;
+}
