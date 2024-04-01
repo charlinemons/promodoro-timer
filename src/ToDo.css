@@ -91,7 +91,7 @@ input:focus-visible {
 button.refresh-button {
   font-family: "Josefin Sans", sans-serif;
   border: none;
-  border-radius: 1rem;
+  border-radius: 2em;
   background-color: #1f1f1d;
   color: #efeeeb;
   padding: 0.7rem;

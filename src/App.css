@@ -4,8 +4,14 @@
 :root {
   --white: #efeeeb;
   --black: #1f1f1d;
-  --green: #73877b;
+  --forest: #73877b;
   --gray: #cdd5d1;
+  --pink: #f981d0;
+  --orange: #fca049;
+  --red: #fc5843;
+  --blue: #98dada;
+  --green: #dcea4f;
+  --purple: #95a3ed;
 }
 
 body {
@@ -61,11 +67,13 @@ body {
 .App .footer {
   position: fixed;
   display: flex;
+  justify-content: center;
   bottom: 20px;
   font-family: "Josefin Sans", sans-serif;
   font-size: 1rem;
   font-weight: 300;
-  color: #fafafa;
+  color: var(--black);
+  width: 100%;
 }
 
 .App .footer div {
@@ -75,12 +83,11 @@ body {
 .App .footer button {
   background: none;
   border: none;
-  color: #fafafa;
+  color: var(--black);
   font-family: inherit;
-  font-size: O.9rem;
+  font-size: 0.9rem;
   font-weight: 300;
   text-decoration: none;
-  filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.8));
 }
 
 .footer button:hover {
@@ -106,6 +113,13 @@ h2 {
   margin-block-start: 0;
 }
 
+/* Dark mode */
+.dark-mode {
+  background-color: #222;
+  color: #fff;
+}
+
+/* Responsive */
 @media (max-width: 480px) {
   .App .container {
     width: auto;

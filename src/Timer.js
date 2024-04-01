@@ -8,7 +8,7 @@ import TimerControls from "./TimerControls";
 const DEFAULT_TIMES_KEY = "defaultTimes";
 const DEFAULT_TIMES = {
   Focus: 1500, // 25 minutes
-  "Short Break": 300, // 5 minutes
+  "Short Break": 100, // 5 minutes
   "Long Break": 900, // 15 minutes
 };
 
@@ -21,6 +21,10 @@ export default function Timer({ sessionType = "Focus" }) {
   const [timerActive, setTimerActive] = useState(false);
   const [soundOn, setSoundOn] = useState(true);
   const [showSaveLink, setShowSaveLink] = useState(false);
+  const [timerResumed, setTimerResumed] = useState(false);
+  const [completedSessions, setCompletedSessions] = useState(
+    parseInt(localStorage.getItem("completedSessions")) || 0
+  );
 
   useEffect(() => {
     let interval;
@@ -32,41 +36,20 @@ export default function Timer({ sessionType = "Focus" }) {
     } else {
       clearInterval(interval);
       if (time === 0) {
+        setCompletedSessions((prevSessions) => {
+          const newSessions = prevSessions + 1;
+          localStorage.setItem("completedSessions", newSessions);
+          return newSessions;
+        });
         if (soundOn) {
           const audio = new Audio(dingSound);
           audio.play();
         }
-        let dynamicTitle = false;
-        interval = setInterval(() => {
-          dynamicTitle = !dynamicTitle;
-          document.title = dynamicTitle
-            ? "⌛ Session completed!"
-            : "✅ Click OK to start your next session";
-        }, 1000);
-        setTimeout(() => {
-          if (document.hasFocus()) {
-            alert(
-              "⌛ Session completed!\n\n✅ Click OK to start your next session."
-            );
-            window.location.reload();
-          } else {
-            const reloadPage = () => {
-              if (document.hasFocus()) {
-                alert(
-                  "⌛ Session completed!\n\n✅ Click OK to start your next session."
-                );
-                window.removeEventListener("focus", reloadPage);
-                window.location.reload();
-              }
-            };
-            window.addEventListener("focus", reloadPage);
-          }
-        }, 1000);
       }
     }
 
     return () => clearInterval(interval);
-  }, [timerActive, time, soundOn]);
+  }, [timerActive, time, soundOn, completedSessions]);
 
   useEffect(() => {
     setTime(() => {
@@ -76,8 +59,17 @@ export default function Timer({ sessionType = "Focus" }) {
     });
   }, [sessionType]);
 
+  useEffect(() => {
+    if (sessionType === "Focus") {
+      setShowSaveLink(true);
+    } else {
+      setShowSaveLink(false);
+    }
+  }, [sessionType]);
+
   const toggleTimer = () => {
     setTimerActive((prevActive) => !prevActive);
+    setTimerResumed(true);
   };
 
   const toggleSound = () => {
@@ -98,6 +90,7 @@ export default function Timer({ sessionType = "Focus" }) {
     setTime(newTime);
     setShowSaveLink(true);
   };
+
   const decrementTime = () => {
     if (time > 60) {
       const newTime = Math.round((time - 60) / 60) * 60;
@@ -105,7 +98,6 @@ export default function Timer({ sessionType = "Focus" }) {
       setShowSaveLink(true);
     }
   };
-  // both rounded to the nearest minute to avoid fractional minutes
 
   const saveNewDefaultTime = (newTime) => {
     const storedDefaultTimes =
@@ -134,6 +126,7 @@ export default function Timer({ sessionType = "Focus" }) {
         time={time}
         decrementTime={decrementTime}
         incrementTime={incrementTime}
+        timerResumed={timerResumed}
       />
       <TimerSaveLink
         showSaveLink={showSaveLink}

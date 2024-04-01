@@ -1,0 +1,13 @@
+.timer-tracker {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.tracker-point {
+  width: 10px;
+  height: 10px;
+  background-color: #ff5733; /* Changez la couleur comme vous le souhaitez */
+  border-radius: 50%;
+  margin: 0 5px;
+}

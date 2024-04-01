@@ -1,6 +1,6 @@
-import React from "react";
-
 export default function TimerDisplay({ time }) {
+  console.log("Time prop in TimerDisplay:", time);
+
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;

@@ -14,7 +14,7 @@ const DEFAULT_SESSION_TYPE = "Focus";
 export default function App() {
   const [sessionType, setSessionType] = useState(DEFAULT_SESSION_TYPE);
   const [showModal, setShowModal] = useState(false);
-  const [backgroundColor] = useState("#EFEEEB"); // Set your desired background color here
+  const [darkMode, setDarkMode] = useState(false); // State to track dark mode
 
   const handleSessionChange = (type) => {
     setSessionType(type);
@@ -38,12 +38,12 @@ export default function App() {
     setShowModal(false);
   };
 
-  // const changeBackgroundColor = (color) => {
-  //   setBackgroundColor(color);
-  // };
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode); // Toggle dark mode state
+  };
 
   return (
-    <div className="App" style={{ backgroundColor }}>
+    <div className={`App ${darkMode ? "dark-mode" : ""}`}>
       <div className="container">
         <Header />
         <SessionButtons handleSessionChange={handleSessionChange} />
@@ -56,14 +56,21 @@ export default function App() {
         <h2 className="stay-focus">
           Get shit done & don't give a fuck about what other people think
         </h2>
-      </div>
-      <div className="footer">
-        <div className="pomodoro-info">
-          <button onClick={openModal}>About this app</button>
-        </div>
-        |
-        <div className="restore-default-settings">
-          <button onClick={restoreDefaultSettings}>Reset settings</button>
+
+        <div className="footer">
+          <div className="pomodoro-info">
+            <button onClick={openModal}>About this app</button>
+          </div>
+          |
+          <div className="restore-default-settings">
+            <button onClick={restoreDefaultSettings}>Reset settings</button>
+          </div>
+          |
+          <div className="dark-mode-toggle">
+            <button onClick={toggleDarkMode}>
+              {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
+          </div>
         </div>
       </div>
     </div>
