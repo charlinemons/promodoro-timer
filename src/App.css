@@ -10,7 +10,7 @@
   --orange: #fca049;
   --red: #fc5843;
   --blue: #98dada;
-  --green: #dcea4f;
+  --green: #050504;
   --purple: #95a3ed;
 }
 
@@ -114,7 +114,7 @@ h2 {
 }
 
 /* Dark mode */
-.dark-mode {
+.dark {
   background-color: #222;
   color: #fff;
 }

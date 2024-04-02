@@ -1,7 +1,8 @@
+//App.js
 import React, { useState } from "react";
 import Timer from "./Timer";
 import Header from "./Header";
-import SessionButtons from "./Buttons";
+import ChangeTimer from "./ChangeTimer";
 import Modal from "./Modal";
 import ToDo from "./ToDo";
 import Notes from "./Notes";
@@ -14,7 +15,7 @@ const DEFAULT_SESSION_TYPE = "Focus";
 export default function App() {
   const [sessionType, setSessionType] = useState(DEFAULT_SESSION_TYPE);
   const [showModal, setShowModal] = useState(false);
-  const [darkMode, setDarkMode] = useState(false); // State to track dark mode
+  const [theme, setTheme] = useState("light"); // State to track the theme
 
   const handleSessionChange = (type) => {
     setSessionType(type);
@@ -38,15 +39,14 @@ export default function App() {
     setShowModal(false);
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode); // Toggle dark mode state
+  const handleThemeChange = (selectedTheme) => {
+    setTheme(selectedTheme);
   };
 
   return (
-    <div className={`App ${darkMode ? "dark-mode" : ""}`}>
+    <div className={`App ${theme}`}>
       <div className="container">
         <Header />
-        <SessionButtons handleSessionChange={handleSessionChange} />
         <div className="notes-section">
           <ToDo />
           <Notes />
@@ -66,10 +66,15 @@ export default function App() {
             <button onClick={restoreDefaultSettings}>Reset settings</button>
           </div>
           |
-          <div className="dark-mode-toggle">
-            <button onClick={toggleDarkMode}>
-              {darkMode ? "Light Mode" : "Dark Mode"}
-            </button>
+          <div className="theme-dropdown">
+            <select
+              value={theme}
+              onChange={(e) => handleThemeChange(e.target.value)}
+            >
+              <option value="light">Light Theme</option>
+              <option value="dark">Dark Mode</option>
+              <option value="colorful">Colorful Theme</option>
+            </select>
           </div>
         </div>
       </div>

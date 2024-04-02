@@ -1,21 +1,41 @@
 .Timer {
-  /* text-align: center; */
   font-family: "neue haas grotesk display pro";
   font-weight: 400;
   margin: 90px 0 0 0;
-  /* position: fixed;
-  bottom: 0;
-  width: 100%; */
-  display: flex;
-  align-items: center;
   border-bottom: 2px solid;
+  justify-content: space-between;
 }
 
+.Timer .Pomodoto-timer {
+  display: flex;
+  justify-content: flex-start;
+}
+.Timer .Timer-Controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Timer .timer-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.Timer .timer-display h1 {
+  font-size: 15rem;
+  font-family: "neue haas grotesk display pro";
+  font-weight: 400;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin: 0 1rem;
+  color: #1f1f1d;
+  line-height: 1;
+}
+/* Button */
 .Timer button {
   border: none;
   background-color: transparent;
   color: #1f1f1d;
-  /* opacity: 0.5; */
 }
 
 .Timer button:hover,
@@ -29,40 +49,39 @@
   scale: 0.9;
 }
 
-/* .Timer .timer-display {
-  display: flex;
-  align-items: flex-end;
-  border-bottom: 1px solid #1f1f1d;
-} */
-
-.Timer .timer-display h1 {
-  font-size: 15rem;
-  font-family: "neue haas grotesk display pro";
-  font-weight: 400;
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  margin: 0 1rem;
-  color: #1f1f1d;
-  line-height: 1;
+/* Session icons */
+.session-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #f2f2f2;
+  margin-bottom: 5px;
+  background: #f2f2f2;
+  transition: background-color 0.5s ease;
 }
 
-.Timer h2 {
-  font-size: 2rem;
-  font-family: "Quicksand", sans-serif;
-  font-weight: 400;
-  /* text-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
-  /* margin: 0 1rem; */
-  color: #1d1a2f;
-  text-align: left;
+.session-icon.completed {
+  background: #1f1f1d;
+  animation: fadeIn 0.5s ease;
 }
 
-.Timer .timer-display button {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* .Timer .timer-display button {
   font-family: inherit;
   font-size: 2.5rem;
   padding: 0;
   filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.4));
-}
+} */
 
-.Timer .timer-save-link button {
+/* .Timer .timer-save-link button {
   font-family: "Josefin Sans", sans-serif;
   font-weight: 300;
   color: #fafafa;
@@ -74,28 +93,28 @@
 .Timer .timer-save-link button:hover {
   font-size: 0.85rem;
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-}
+} */
 
-.Timer .timer-buttons {
+/* .Timer .timer-buttons {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
+} */
 
-.Timer .timer-buttons button svg {
+/* .Timer .timer-buttons button svg {
   font-size: 25px;
-  /* filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.4)); */
-}
 
-.Timer .timer-buttons button.reset-icon {
+} */
+
+/* .Timer .timer-buttons button.reset-icon {
   font-size: 0.8rem;
 }
 
 .Timer .timer-buttons button.sound-icon {
   font-size: 0.8rem;
-}
+} */
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .Timer .timer-buttons {
     margin-top: 15px;
   }
@@ -111,4 +130,4 @@
   .Timer .timer-buttons button.playpause-icon {
     font-size: 1.2rem;
   }
-}
+} */

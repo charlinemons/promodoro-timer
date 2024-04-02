@@ -1,10 +1,10 @@
-.SessionButtons .controller-wrapper {
+.ChangeTimer .controller-wrapper {
   padding: 30px;
-  width: 290px;
+  /* width: 290px; */
   margin: auto;
 }
 
-.SessionButtons button {
+.ChangeTimer button {
   font-family: "Josefin Sans", sans-serif;
   border: none;
   border-radius: 2rem;
@@ -19,18 +19,18 @@
   border: 1px solid transparent;
 }
 
-.SessionButtons button:hover {
+.ChangeTimer button:hover {
   cursor: pointer;
   background-color: #efeeeb;
   color: #1f1f1d;
   border: 1px solid;
 }
 
-/* .SessionButtons button:active {
+/* .ChangeTimer button:active {
   scale: 0.9;
 } */
 
-.SessionButtons button.active {
+.ChangeTimer button.active {
   background-color: #efeeeb;
   color: #1f1f1d;
   border: 1px solid;
@@ -38,36 +38,36 @@
   margin: 0.5rem 0.5rem;
 }
 
-.SessionButtons .break-buttons {
+.ChangeTimer .break-buttons {
   display: flex;
 }
 
-.SessionButtons .break-buttons button {
+.ChangeTimer .break-buttons button {
   font-size: 1rem;
 }
 
-.SessionButtons .break-buttons .short-break {
+.ChangeTimer .break-buttons .short-break {
   flex-grow: 1;
 }
 
-.SessionButtons .break-buttons .long-break {
+.ChangeTimer .break-buttons .long-break {
   flex-grow: 11;
 }
 
-.SessionButtons .focus {
+.ChangeTimer .focus {
   width: calc(100% - 1rem);
   font-size: 1rem;
 }
 
 @media (max-width: 480px) {
-  .SessionButtons button {
+  .ChangeTimer button {
     padding: 0.7rem;
   }
 
-  .SessionButtons .break-buttons button {
+  .ChangeTimer .break-buttons button {
     font-size: 0.9rem;
   }
-  .SessionButtons .focus {
+  .ChangeTimer .focus {
     font-size: 1.2rem;
   }
 }
