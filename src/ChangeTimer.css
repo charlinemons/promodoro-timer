@@ -1,38 +1,41 @@
+.ChangeTimer {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding-bottom: 119px;
+}
+
 .ChangeTimer .controller-wrapper {
   padding: 30px;
   /* width: 290px; */
   margin: auto;
 }
 
-.ChangeTimer button {
+.ChangeTimer .changeTimerButton {
   font-family: "Josefin Sans", sans-serif;
-  border: none;
   border-radius: 2rem;
-  background-color: #1f1f1d;
-  color: #efeeeb;
+  background-color: #efeeeb;
+  color: #1f1f1d;
   padding: 0.7rem;
   margin: 0.5rem 0.5rem;
   transition: scale 0.5s ease;
-  justify-content: center;
   line-height: 1;
-  width: 230px;
+  width: 180px;
   border: 1px solid transparent;
+  text-transform: lowercase;
 }
 
 .ChangeTimer button:hover {
   cursor: pointer;
-  background-color: #efeeeb;
-  color: #1f1f1d;
+  background-color: #1f1f1d;
+  color: #efeeeb;
   border: 1px solid;
 }
 
-/* .ChangeTimer button:active {
-  scale: 0.9;
-} */
-
 .ChangeTimer button.active {
-  background-color: #efeeeb;
-  color: #1f1f1d;
+  background-color: #1f1f1d;
+  color: #efeeeb;
   border: 1px solid;
   padding: 0.7rem;
   margin: 0.5rem 0.5rem;

@@ -7,6 +7,7 @@
   align-items: flex-start;
   justify-content: center;
   gap: 50px;
+  padding-top: 70px;
 }
 .Notes .note-heading {
   margin-bottom: 2em;
@@ -14,8 +15,7 @@
 .Notes small {
   margin-bottom: 2em;
 }
-
-.bloc-note {
+.Notes .bloc-note {
   height: 100%;
   width: 100%;
   padding: 0px;
