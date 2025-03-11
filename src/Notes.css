@@ -2,6 +2,11 @@
   width: 100%;
   height: 550px;
 }
+
+.Notes h2 {
+  text-align: left;
+}
+
 .notes-section {
   display: flex;
   align-items: flex-start;
@@ -36,4 +41,88 @@ textarea.block-text {
 
 :focus-visible {
   outline: -webkit-focus-ring-color auto 0px;
+}
+
+/* .Notes {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+} */
+
+.note-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-note-button {
+  background: #ffcc00;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+.sticky-wall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.sticky-note,
+.add-note {
+  width: 180px;
+  height: 150px;
+}
+
+.sticky-note {
+  background: #fef68a;
+  padding: 10px;
+  border-radius: 8px;
+  width: 180px;
+  height: 150px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.add-note {
+  background: #ebebeb;
+  padding: 10px;
+  border-radius: 8px;
+  width: 180px;
+  height: 150px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.note-text {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  resize: none;
+  outline: none;
+  font-size: 13px;
+  padding: 5px;
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #00000090;
+  padding: 0px;
 }

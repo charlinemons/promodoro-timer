@@ -6,6 +6,7 @@ import ChangeTimer from "./ChangeTimer";
 import Modal from "./Modal";
 import ToDo from "./ToDo";
 import Notes from "./Notes";
+import Calendar from "./Calendar";
 
 import "./App.css";
 import "./Timer.css";
@@ -47,15 +48,16 @@ export default function App() {
     <div className={`App ${theme}`}>
       <div className="container">
         <Header />
+        <h2 className="stay-focus">
+          {/* Get shit done & don't give a fuck about what other people think */}
+        </h2>
         <div className="notes-section">
           <ToDo />
           <Notes />
+          <Calendar />
+          {/* <Timer sessionType={sessionType} /> */}
         </div>
-        <Timer sessionType={sessionType} />
         <Modal showModal={showModal} closeModal={closeModal} />
-        <h2 className="stay-focus">
-          Get shit done & don't give a fuck about what other people think
-        </h2>
 
         <div className="footer">
           <div className="pomodoro-info">

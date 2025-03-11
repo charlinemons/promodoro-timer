@@ -1,32 +1,6 @@
-/* .ToDo {
-  margin: auto 550px;
+.ToDo {
+  width: 450px;
 }
-letter-spacing: 2px;
-}
-
-.ToDo .input-container {
-  border: 1px solid var(--off-black);
-  border-radius: 5px;
-  background-color: var(--off-white);
-  position: relative;
-  display: grid;
-  grid-template-columns: 0.5fr 1fr;
-  justify-items: start;
-  align-items: center;
-}
-input.todo-input {
-  border: 1px solid var(--off-white);
-  padding: 8px 15px;
-  color: var(--off-white);
-  background-color: transparent;
-  width: 100%;
-  color: var(--green);
-}
-
-button.todo-btn {
-  background-color: transparent;
-  border: none;
-} */
 
 .ToDo .todo-heading {
   margin-bottom: 2em;
