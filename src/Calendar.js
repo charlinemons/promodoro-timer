@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { GoPlus, GoX } from "react-icons/go";
 import "./Calendar.css";
 
@@ -14,29 +14,32 @@ const Calendar = () => {
     info: "",
   });
 
-  useEffect(() => {
-    const storedEvents =
-      JSON.parse(localStorage.getItem("calendarEvents")) || [];
-    setEvents(sortEvents(storedEvents));
-  }, []);
-
-  const updateLocalStorage = (updatedEvents) => {
-    localStorage.setItem("calendarEvents", JSON.stringify(updatedEvents));
-  };
-
-  const parseEventDate = (event) => {
+  const parseEventDate = useCallback((event) => {
     const { date, time } = event;
     if (!date || !time) return new Date();
     const fullDateString = `${date} ${new Date().getFullYear()} ${time}`;
     const parsedDate = new Date(fullDateString);
     return isNaN(parsedDate.getTime()) ? new Date() : parsedDate;
-  };
+  }, []);
 
-  const sortEvents = (eventsArray) => {
-    return [...eventsArray].sort(
-      (a, b) => parseEventDate(a) - parseEventDate(b)
-    );
-  };
+  const sortEvents = useCallback(
+    (eventsArray) => {
+      return [...eventsArray].sort(
+        (a, b) => parseEventDate(b) - parseEventDate(a)
+      );
+    },
+    [parseEventDate]
+  );
+
+  const updateLocalStorage = useCallback((updatedEvents) => {
+    localStorage.setItem("calendarEvents", JSON.stringify(updatedEvents));
+  }, []);
+
+  useEffect(() => {
+    const storedEvents =
+      JSON.parse(localStorage.getItem("calendarEvents")) || [];
+    setEvents(sortEvents(storedEvents));
+  }, [sortEvents]);
 
   const openModal = () => {
     if (!newEventTitle.trim()) {
@@ -51,7 +54,7 @@ const Calendar = () => {
       info: "",
     });
     setShowModal(true);
-    setNewEventTitle(""); // Clear the input after opening the modal
+    setNewEventTitle("");
   };
 
   const closeModal = () => {
@@ -65,7 +68,6 @@ const Calendar = () => {
       return;
     }
 
-    // On peut ne pas avoir d'heure, d'adresse ou d'info, ils sont optionnels
     const updatedEvent = {
       title,
       date,
@@ -74,17 +76,17 @@ const Calendar = () => {
       info: info || "No additional info",
     };
 
-    const updatedEvents = sortEvents([...events, updatedEvent]); // Ajoute l'événement et trie
-    setEvents(updatedEvents); // Mets à jour l'état
-    updateLocalStorage(updatedEvents); // Mets à jour localStorage
-    setShowModal(false); // Ferme la modale
+    const updatedEvents = sortEvents([...events, updatedEvent]);
+    setEvents(updatedEvents);
+    updateLocalStorage(updatedEvents);
+    setShowModal(false);
     setEventDetails({
       title: "",
       date: "",
       time: "",
       address: "",
       info: "",
-    }); // Réinitialise les détails de l'événement
+    });
   };
 
   const deleteEvent = (index) => {
@@ -103,6 +105,7 @@ const Calendar = () => {
     <div className="calendar">
       <h2>Calendar</h2>
       <small>{getMessage()}</small>
+
       <div className="event-form">
         <input
           type="text"
@@ -115,11 +118,10 @@ const Calendar = () => {
             }
           }}
         />
-
         <button
           className="add-event"
           onClick={openModal}
-          disabled={!newEventTitle.trim()} // Disable button if no title
+          disabled={!newEventTitle.trim()}
         >
           <GoPlus size={20} />
         </button>
@@ -127,7 +129,6 @@ const Calendar = () => {
 
       <ul className="event-list">
         {events.map((event, index) => {
-          // Formatage de la date (ex: 23 March)
           const eventDate = new Date(event.date);
           const formattedDate = eventDate.toLocaleDateString("en-GB", {
             day: "numeric",
@@ -158,7 +159,6 @@ const Calendar = () => {
           <div className="modal">
             <h3>Add Details for "{eventDetails.title}"</h3>
 
-            {/* Date Picker */}
             <input
               type="date"
               value={eventDetails.date}
@@ -168,7 +168,6 @@ const Calendar = () => {
               required
             />
 
-            {/* Time Picker (optional) */}
             <input
               type="time"
               value={eventDetails.time}
@@ -177,7 +176,6 @@ const Calendar = () => {
               }
             />
 
-            {/* Address (optional) */}
             <input
               type="text"
               placeholder="Event address (e.g., 123 Main St)"
@@ -187,7 +185,6 @@ const Calendar = () => {
               }
             />
 
-            {/* Additional Info (optional) */}
             <textarea
               placeholder="Additional information (optional)"
               value={eventDetails.info}
