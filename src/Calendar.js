@@ -17,7 +17,7 @@ const Calendar = () => {
   const parseEventDate = useCallback((event) => {
     const { date, time } = event;
     if (!date || !time) return new Date();
-    const fullDateString = `${date} ${new Date().getFullYear()} ${time}`;
+    const fullDateString = event.datetime;
     const parsedDate = new Date(fullDateString);
     return isNaN(parsedDate.getTime()) ? new Date() : parsedDate;
   }, []);
@@ -25,7 +25,7 @@ const Calendar = () => {
   const sortEvents = useCallback(
     (eventsArray) => {
       return [...eventsArray].sort(
-        (a, b) => parseEventDate(b) - parseEventDate(a)
+        (a, b) => parseEventDate(a) - parseEventDate(b)
       );
     },
     [parseEventDate]
@@ -72,6 +72,7 @@ const Calendar = () => {
       title,
       date,
       time: time || "TBD",
+      datetime: `${date}T${time || "00:00"}`,
       address: address || "TBD",
       info: info || "No additional info",
     };
@@ -178,7 +179,7 @@ const Calendar = () => {
 
             <input
               type="text"
-              placeholder="Event address (e.g., 123 Main St)"
+              placeholder="Event address (optional)"
               value={eventDetails.address}
               onChange={(e) =>
                 setEventDetails({ ...eventDetails, address: e.target.value })
